@@ -1,0 +1,8 @@
+__pycache__
+bin
+docs/*
+flagged
+include
+lib
+pyvenv.cfg
+index.json
