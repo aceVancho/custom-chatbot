@@ -10,9 +10,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urljoin
 
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
-
-url = "https://gpt-index.readthedocs.io/en/latest/index.html"
-
+gpt_model_name = "gpt-4"
 def construct_index_from_docs(directory_path):
     max_input_size = 4096
     num_outputs = 512
@@ -39,7 +37,7 @@ def construct_index_from_website(url):
 
     prompt_helper = PromptHelper(max_input_size, num_outputs, max_chunk_overlap, chunk_size_limit=chunk_size_limit)
 
-    llm_predictor = LLMPredictor(llm=OpenAI(temperature=0.7, model_name="gpt-4", max_tokens=num_outputs))
+    llm_predictor = LLMPredictor(llm=OpenAI(temperature=0.7, model_name=gpt_model_name, max_tokens=num_outputs))
 
     service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper)
 
@@ -58,10 +56,24 @@ def chatbot(input_text):
     response = index.query(input_text, response_mode="compact")
     return response.response
 
-iface = gr.Interface(fn=chatbot,
-                     inputs=gr.inputs.Textbox(lines=7, label="Enter your text"),
-                     outputs="text",
-                     title="Informed Chatbot")
+url = input('Enter a URL you would like to learn about:  ')
+
+user_textbox = gr.inputs.Textbox(
+    lines=20, 
+    label="Enter your text")
+
+chatbot_textbox = gr.inputs.Textbox(
+    lines=20, 
+    label="Response:",)
+
+iface = gr.Interface(
+    fn=chatbot,
+    inputs=user_textbox,
+    outputs=chatbot_textbox,
+    title=f"Chatbot based on {url}",
+    description=f"This chatbot runs on ChatGPT's {gpt_model_name} model"
+    )
+
 # Pick one
 # index = construct_index_from_docs('docs')
 index = construct_index_from_website(url)
