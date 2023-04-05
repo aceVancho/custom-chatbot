@@ -6,6 +6,7 @@ anyio==3.6.2
 async-timeout==4.0.2
 attrs==22.2.0
 beautifulsoup4==4.12.1
+Brotli==1.0.9
 build==0.10.0
 CacheControl==0.12.11
 certifi==2022.12.7
@@ -15,6 +16,7 @@ cleo==2.0.1
 click==7.1.2
 contourpy==1.0.7
 crashtest==0.4.1
+cssselect2==0.7.0
 cycler==0.11.0
 dataclasses-json==0.5.7
 distlib==0.3.6
@@ -73,8 +75,10 @@ ptyprocess==0.7.0
 pycparser==2.21
 pydantic==1.10.7
 pydub==0.25.1
+pydyf==0.6.0
 pyparsing==3.0.9
 PyPDF2==3.0.1
+pyphen==0.14.0
 pyproject_hooks==1.0.0
 pyrsistent==0.19.3
 python-dateutil==2.8.2
@@ -95,6 +99,7 @@ SQLAlchemy==1.4.47
 starlette==0.26.1
 tenacity==8.2.2
 tiktoken==0.3.3
+tinycss2==1.2.1
 tomli==2.0.1
 tomlkit==0.11.7
 toolz==0.12.0
@@ -107,8 +112,10 @@ uc-micro-py==1.0.1
 urllib3==1.26.15
 uvicorn==0.21.1
 virtualenv==20.21.0
+weasyprint==58.1
 webencodings==0.5.1
 websockets==11.0
 xattr==0.10.1
 yarl==1.8.2
 zipp==3.15.0
+zopfli==0.2.2
